@@ -1,0 +1,156 @@
+---
+import type { Lang } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const categories = [
+  { key: 'kitchen' as const, icon: 'kitchen' },
+  { key: 'water' as const, icon: 'water' },
+  { key: 'energy' as const, icon: 'energy' },
+  { key: 'exterior' as const, icon: 'exterior' },
+];
+---
+
+<section class="equipment section">
+  <div class="equipment__inner container">
+    <h2 class="section-title fade-in-up">{t.equipment.title}</h2>
+
+    <div class="equipment__grid">
+      {categories.map((cat) => {
+        const category = t.equipment.categories[cat.key];
+        return (
+          <div class="equipment-card fade-in-up">
+            <div class="equipment-card__icon">
+              {cat.icon === 'kitchen' && (
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 28V14a2 2 0 012-2h16a2 2 0 012 2v14"/>
+                  <circle cx="14" cy="20" r="2.5"/>
+                  <circle cx="22" cy="20" r="2.5"/>
+                  <path d="M5 28h26"/>
+                  <path d="M14 12V8"/>
+                  <path d="M22 12V8"/>
+                </svg>
+              )}
+              {cat.icon === 'water' && (
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 4 C18 4 8 16 8 22a10 10 0 0020 0C28 16 18 4 18 4z"/>
+                  <path d="M14 24c1-2 3-3 5-2" opacity="0.5"/>
+                </svg>
+              )}
+              {cat.icon === 'energy' && (
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="18" r="8"/>
+                  <path d="M18 2v4"/>
+                  <path d="M18 30v4"/>
+                  <path d="M2 18h4"/>
+                  <path d="M30 18h4"/>
+                  <path d="M6.7 6.7l2.8 2.8"/>
+                  <path d="M26.5 26.5l2.8 2.8"/>
+                  <path d="M6.7 29.3l2.8-2.8"/>
+                  <path d="M26.5 9.5l2.8-2.8"/>
+                </svg>
+              )}
+              {cat.icon === 'exterior' && (
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 28 L18 8 L32 28z"/>
+                  <path d="M4 28h28"/>
+                  <path d="M14 28v-6h8v6"/>
+                </svg>
+              )}
+            </div>
+            <h3 class="equipment-card__title">{category.label}</h3>
+            <ul class="equipment-card__list">
+              {category.items.map((item: string) => (
+                <li class="equipment-card__item">
+                  <span class="equipment-card__dot" aria-hidden="true"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .equipment__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .equipment-card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 2px solid transparent;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  }
+
+  .equipment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-warm);
+    border-color: var(--color-primary);
+  }
+
+  .equipment-card__icon {
+    margin-bottom: 1rem;
+  }
+
+  .equipment-card__title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .equipment-card__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .equipment-card__item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    opacity: 0.85;
+  }
+
+  .equipment-card__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-sage);
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 480px) {
+    .equipment__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .equipment__grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .equipment-card {
+      padding: 1.75rem;
+    }
+  }
+</style>

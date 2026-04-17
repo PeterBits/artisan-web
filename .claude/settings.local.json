@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm \"/c/Users/Pedro/Desktop/CERCANA Y ARTESANAL/src/components/Welcome.astro\")",
+      "Bash(rm \"/c/Users/Pedro/Desktop/CERCANA Y ARTESANAL/src/assets/astro.svg\")",
+      "Bash(rm \"/c/Users/Pedro/Desktop/CERCANA Y ARTESANAL/src/assets/background.svg\")",
+      "Bash(mkdir -p \"/c/Users/Pedro/Desktop/CERCANA Y ARTESANAL/src/i18n\")",
+      "Bash(mkdir -p \"/c/Users/Pedro/Desktop/CERCANA Y ARTESANAL/src/styles\")",
+      "Bash(mkdir -p \"/c/Users/Pedro/Desktop/CERCANA Y ARTESANAL/src/pages/es\")",
+      "Bash(mkdir -p \"/c/Users/Pedro/Desktop/CERCANA Y ARTESANAL/src/pages/en\")",
+      "Bash(mkdir -p \"/c/Users/Pedro/Desktop/CERCANA Y ARTESANAL/src/pages/api\")",
+      "Bash(npm install:*)",
+      "Bash(npm show:*)",
+      "Bash(npx astro:*)"
+    ]
+  }
+}

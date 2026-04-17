@@ -1,0 +1,184 @@
+---
+import type { Lang } from '../i18n/utils';
+import { useTranslations, getBookingsPath } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const bookingsPath = getBookingsPath(lang);
+---
+
+<section class="hero section">
+  <div class="hero__inner container">
+    <div class="hero__content fade-in-up">
+      <h1 class="hero__title">{t.hero.title}</h1>
+      <p class="hero__subtitle">{t.hero.subtitle}</p>
+      <a href={bookingsPath} class="btn-primary hero__cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        {t.hero.cta}
+      </a>
+    </div>
+
+    <div class="hero__image-wrapper fade-in-up">
+      <!-- Decorative sun SVG -->
+      <svg class="hero__sun svg-decoration" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="30" cy="30" r="10" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M30 8 C31 12, 29 12, 30 16" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M30 44 C31 48, 29 48, 30 52" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M8 30 C12 31, 12 29, 16 30" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M44 30 C48 31, 48 29, 52 30" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M14.5 14.5 C17 16, 16 17, 19 19" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M41 41 C43.5 42.5, 42.5 43.5, 45.5 45.5" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M14.5 45.5 C17 43.5, 16 42.5, 19 41" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M41 19 C43.5 17, 42.5 16, 45.5 14.5" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+
+      <img
+        src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=1200&q=80"
+        alt="Lola, camper van Volkswagen T5"
+        class="hero__image"
+        loading="eager"
+        width="1200"
+        height="800"
+      />
+
+      <!-- Decorative mountain SVG -->
+      <svg class="hero__mountains svg-decoration" width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M5 38 L25 8 L35 20 L50 5 L65 22 L75 14 L95 38" stroke="var(--color-sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M85 38 L100 18 L115 38" stroke="var(--color-sage)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 2rem 0 3rem;
+  }
+
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .hero__content {
+    max-width: 600px;
+  }
+
+  .hero__title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .hero__subtitle {
+    font-size: 1.15rem;
+    color: var(--color-text);
+    opacity: 0.85;
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+
+  .hero__cta {
+    font-size: 1.05rem;
+    padding: 0.85rem 2.2rem;
+  }
+
+  .hero__image-wrapper {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .hero__image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-warm-lg);
+    transform: rotate(-0.5deg);
+    transition: transform var(--transition);
+    object-fit: cover;
+    aspect-ratio: 3 / 2;
+  }
+
+  .hero__image:hover {
+    transform: rotate(0deg) scale(1.01);
+  }
+
+  .hero__sun {
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    opacity: 0.7;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .hero__mountains {
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    opacity: 0.6;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  @media (min-width: 768px) {
+    .hero {
+      padding: 4rem 0 5rem;
+    }
+
+    .hero__title {
+      font-size: 2.8rem;
+    }
+
+    .hero__subtitle {
+      font-size: 1.25rem;
+    }
+
+    .hero__image-wrapper {
+      padding: 0;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero {
+      padding: 4rem 0 6rem;
+    }
+
+    .hero__title {
+      font-size: 3.2rem;
+    }
+
+    .hero__sun {
+      top: -30px;
+      right: -10px;
+      width: 80px;
+      height: 80px;
+    }
+
+    .hero__mountains {
+      bottom: -15px;
+      left: -20px;
+      width: 160px;
+      height: 50px;
+    }
+  }
+</style>

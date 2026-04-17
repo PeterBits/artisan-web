@@ -1,0 +1,219 @@
+---
+import type { Lang } from '../i18n/utils';
+import { useTranslations } from '../i18n/utils';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const specs = [
+  {
+    key: 'model',
+    icon: 'car',
+    label: lang === 'es' ? 'Modelo' : 'Model',
+    value: t.vanIntro.specs.model,
+  },
+  {
+    key: 'seats',
+    icon: 'people',
+    label: lang === 'es' ? 'Plazas' : 'Seats',
+    value: t.vanIntro.specs.seats,
+  },
+  {
+    key: 'bed',
+    icon: 'bed',
+    label: lang === 'es' ? 'Cama' : 'Bed',
+    value: t.vanIntro.specs.bed,
+  },
+  {
+    key: 'license',
+    icon: 'license',
+    label: lang === 'es' ? 'Carnet' : 'License',
+    value: t.vanIntro.specs.license,
+  },
+];
+---
+
+<section class="van-intro section">
+  <div class="van-intro__inner container">
+    <div class="van-intro__content fade-in-up">
+      <h2 class="section-title">{t.vanIntro.title}</h2>
+      <p class="van-intro__description">{t.vanIntro.description}</p>
+    </div>
+
+    <div class="van-intro__image-wrapper fade-in-up">
+      <img
+        src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80"
+        alt="Interior de Lola, camper van"
+        class="van-intro__image"
+        loading="lazy"
+        width="800"
+        height="600"
+      />
+    </div>
+
+    <div class="van-intro__specs fade-in-up">
+      {specs.map((spec) => (
+        <div class="spec-card">
+          <div class="spec-card__icon">
+            {spec.icon === 'car' && (
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="10" width="24" height="10" rx="3"/>
+                <circle cx="8" cy="20" r="2"/>
+                <circle cx="20" cy="20" r="2"/>
+                <path d="M6 10 L8 5h12l2 5"/>
+              </svg>
+            )}
+            {spec.icon === 'people' && (
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="10" cy="8" r="3"/>
+                <circle cx="20" cy="8" r="2.5"/>
+                <path d="M4 22c0-4 3-6 6-6s6 2 6 6"/>
+                <path d="M16 22c0-3.5 2-5 4-5s4 1.5 4 5"/>
+              </svg>
+            )}
+            {spec.icon === 'bed' && (
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 20V10a2 2 0 012-2h18a2 2 0 012 2v10"/>
+                <path d="M3 14h22"/>
+                <path d="M7 14v-3a1 1 0 011-1h4a1 1 0 011 1v3"/>
+                <line x1="3" y1="20" x2="3" y2="23"/>
+                <line x1="25" y1="20" x2="25" y2="23"/>
+              </svg>
+            )}
+            {spec.icon === 'license' && (
+              <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="6" width="22" height="16" rx="3"/>
+                <circle cx="10" cy="13" r="3"/>
+                <line x1="16" y1="10" x2="22" y2="10"/>
+                <line x1="16" y1="14" x2="22" y2="14"/>
+                <line x1="16" y1="18" x2="20" y2="18"/>
+              </svg>
+            )}
+          </div>
+          <div class="spec-card__text">
+            <span class="spec-card__label">{spec.label}</span>
+            <span class="spec-card__value">{spec.value}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .van-intro__inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .van-intro__content {
+    order: 1;
+  }
+
+  .van-intro__image-wrapper {
+    order: 2;
+  }
+
+  .van-intro__specs {
+    order: 3;
+  }
+
+  .van-intro__description {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    opacity: 0.85;
+    max-width: 520px;
+  }
+
+  .van-intro__image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-warm);
+    object-fit: cover;
+    aspect-ratio: 4 / 3;
+  }
+
+  .van-intro__specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .spec-card {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+
+  .spec-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-warm);
+  }
+
+  .spec-card__icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+  }
+
+  .spec-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .spec-card__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+  }
+
+  .spec-card__value {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    line-height: 1.4;
+  }
+
+  @media (min-width: 768px) {
+    .van-intro__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .van-intro__content {
+      order: 1;
+    }
+
+    .van-intro__image-wrapper {
+      order: 2;
+    }
+
+    .van-intro__specs {
+      order: 3;
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .spec-card {
+      padding: 1.5rem;
+    }
+
+    .spec-card__value {
+      font-size: 0.95rem;
+    }
+  }
+</style>

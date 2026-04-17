@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BookingCalendar from '../../components/BookingCalendar.astro';
+import PriceInfo from '../../components/PriceInfo.astro';
+import ContactBlock from '../../components/ContactBlock.astro';
+---
+
+<Layout title="Bookings — Lola Camper" lang="en" description="Check Lola's availability and book your escape days from Toro, Zamora.">
+  <section class="bookings-hero section">
+    <div class="container">
+      <h1 class="bookings-hero__title fade-in-up">When are you escaping?</h1>
+      <p class="bookings-hero__subtitle fade-in-up">Check available dates and escape for a few days with Lola.</p>
+    </div>
+  </section>
+
+  <section class="section--compact">
+    <div class="container">
+      <BookingCalendar lang="en" />
+    </div>
+  </section>
+
+  <PriceInfo lang="en" />
+  <ContactBlock lang="en" />
+</Layout>
+
+<style>
+  .bookings-hero {
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+
+  .bookings-hero__title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .bookings-hero__subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .bookings-hero__title {
+      font-size: 2.8rem;
+    }
+
+    .bookings-hero__subtitle {
+      font-size: 1.2rem;
+    }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BookingCalendar from '../../components/BookingCalendar.astro';
+import PriceInfo from '../../components/PriceInfo.astro';
+import ContactBlock from '../../components/ContactBlock.astro';
+---
+
+<Layout title="Reservas — Lola Camper" lang="es" description="Consulta la disponibilidad de Lola, nuestra camper van, y reserva tus dias de escapada desde Toro, Zamora.">
+  <section class="bookings-hero section">
+    <div class="container">
+      <h1 class="bookings-hero__title fade-in-up">¿Cuándo te escapas?</h1>
+      <p class="bookings-hero__subtitle fade-in-up">Consulta las fechas disponibles y escapa unos dias con Lola.</p>
+    </div>
+  </section>
+
+  <section class="section--compact">
+    <div class="container">
+      <BookingCalendar lang="es" />
+    </div>
+  </section>
+
+  <PriceInfo lang="es" />
+  <ContactBlock lang="es" />
+</Layout>
+
+<style>
+  .bookings-hero {
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+
+  .bookings-hero__title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .bookings-hero__subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 768px) {
+    .bookings-hero__title {
+      font-size: 2.8rem;
+    }
+
+    .bookings-hero__subtitle {
+      font-size: 1.2rem;
+    }
+  }
+</style>

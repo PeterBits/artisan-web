@@ -1,0 +1,82 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "bookings": "Reservas",
+    "lang": "EN"
+  },
+  "hero": {
+    "title": "Escapate unos dias con Lola",
+    "subtitle": "Sale de Toro, Zamora. Vuelves con historias.",
+    "cta": "Mira cuando esta libre"
+  },
+  "vanIntro": {
+    "title": "Conoce a Lola",
+    "description": "La camperizamos en 2022 pensando en todo lo que nos hubiera gustado tener en nuestros viajes. Cada detalle esta ahi por algo.",
+    "specs": {
+      "model": "Volkswagen Transporter T5 (2018)",
+      "seats": "4 plazas de viaje",
+      "bed": "Cama para 2-3 personas (135x190 cm)",
+      "license": "Carnet B"
+    }
+  },
+  "equipment": {
+    "title": "Que lleva dentro",
+    "categories": {
+      "kitchen": {
+        "label": "Cocina",
+        "items": ["2 fuegos", "Nevera 32L", "Kit completo de utensilios"]
+      },
+      "water": {
+        "label": "Agua",
+        "items": ["Deposito 40L", "Ducha exterior"]
+      },
+      "energy": {
+        "label": "Energia",
+        "items": ["Solar 200W", "Bateria auxiliar", "Calefaccion"]
+      },
+      "exterior": {
+        "label": "Exterior",
+        "items": ["Toldo lateral", "Mesa + 2 sillas"]
+      }
+    }
+  },
+  "destinations": {
+    "title": "Desde Toro al mundo",
+    "subtitle": "Toro es el punto de partida perfecto para...",
+    "places": [
+      { "name": "Arribes del Duero", "distance": "1h" },
+      { "name": "Lago de Sanabria", "distance": "1.5h" },
+      { "name": "Sierra de Gredos", "distance": "2h" },
+      { "name": "Norte de Portugal", "distance": "2h" }
+    ]
+  },
+  "testimonials": {
+    "title": "Lo que dicen los viajeros",
+    "placeholder": "Proximamente las experiencias de nuestros primeros viajeros"
+  },
+  "bookings": {
+    "title": "Cuando te escapas?",
+    "loading": "Cargando disponibilidad...",
+    "available": "Disponible",
+    "unavailable": "No disponible",
+    "reserved": "Reservado",
+    "legendAvailable": "Disponible",
+    "legendReserved": "Reservado",
+    "legendPast": "Pasado",
+    "prices": {
+      "summer": { "label": "Verano (jul-ago)", "price": "95eur/noche" },
+      "mid": { "label": "Media temporada (jun, sep)", "price": "80eur/noche" },
+      "low": { "label": "Resto del anio", "price": "65eur/noche" }
+    },
+    "conditions": "Minimo 2 noches - Fianza 500eur - Km sin limite",
+    "contact": "Te encajan las fechas? Escribenos y lo cerramos.",
+    "whatsapp": "Escribir por WhatsApp",
+    "instagram": "Seguir en Instagram"
+  },
+  "footer": {
+    "tagline": "Nos vemos en la carretera -- desde Toro, Zamora.",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "copyright": "2024 Lola Camper. Hecho con carinio."
+  }
+}
