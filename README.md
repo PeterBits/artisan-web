@@ -1,6 +1,6 @@
-# Lola Camper
+# Rodando Libre
 
-Campervan rental website for Lola, a Volkswagen Transporter T5 based in Toro, Zamora (Spain). Built with Astro 6 and deployed on Vercel.
+Campervan rental website based in Toro, Zamora (Spain). Built with Astro 6 and deployed on Vercel.
 
 ## Tech Stack
 

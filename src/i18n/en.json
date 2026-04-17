@@ -5,49 +5,25 @@
     "lang": "ES"
   },
   "hero": {
-    "title": "Escape for a few days with Lola",
+    "title": "Escape for a few days with Rolling Free",
     "subtitle": "Departing from Toro, Zamora. Come back with stories.",
     "cta": "Check availability"
   },
   "vanIntro": {
-    "title": "Meet Lola",
-    "description": "We converted her in 2022, thinking of everything we wished we'd had on our own trips. Every detail is there for a reason.",
-    "specs": {
-      "model": "Volkswagen Transporter T5 (2018)",
-      "seats": "4 travel seats",
-      "bed": "Bed for 2-3 people (135x190 cm)",
-      "license": "Standard driving license"
-    }
+    "title": "Meet our campervan",
+    "description": "A fully featured camper on a Ford chassis, with an over-cab bed and double beds. Equipment is optional, so you can pack it your way."
   },
   "equipment": {
-    "title": "What's inside",
-    "categories": {
-      "kitchen": {
-        "label": "Kitchen",
-        "items": ["2-burner stove", "32L fridge", "Full utensil kit"]
-      },
-      "water": {
-        "label": "Water",
-        "items": ["40L tank", "Outdoor shower"]
-      },
-      "energy": {
-        "label": "Energy",
-        "items": ["200W solar panel", "Auxiliary battery", "Heating"]
-      },
-      "exterior": {
-        "label": "Exterior",
-        "items": ["Side awning", "Table + 2 chairs"]
-      }
-    }
+    "title": "What's inside"
   },
-  "destinations": {
-    "title": "From Toro to the world",
-    "subtitle": "Toro is the perfect starting point for...",
-    "places": [
-      { "name": "Arribes del Duero", "distance": "1h" },
-      { "name": "Lago de Sanabria", "distance": "1.5h" },
-      { "name": "Sierra de Gredos", "distance": "2h" },
-      { "name": "Northern Portugal", "distance": "2h" }
+  "gallery": {
+    "title": "Rolling Free, inside and out",
+    "subtitle": "A few photos so you know her before you hop on board.",
+    "images": [
+      { "alt": "Side view of the campervan on a green meadow" },
+      { "alt": "Interior: lounge area looking towards the front" },
+      { "alt": "Interior: kitchen and access to the rear area" },
+      { "alt": "Fridge open, full of provisions" }
     ]
   },
   "testimonials": {
@@ -63,12 +39,6 @@
     "legendAvailable": "Available",
     "legendReserved": "Reserved",
     "legendPast": "Past",
-    "prices": {
-      "summer": { "label": "Summer (Jul-Aug)", "price": "95eur/night" },
-      "mid": { "label": "Mid season (Jun, Sep)", "price": "80eur/night" },
-      "low": { "label": "Rest of the year", "price": "65eur/night" }
-    },
-    "conditions": "Minimum 2 nights - Deposit 500eur - Unlimited km",
     "contact": "Do the dates work for you? Get in touch and we'll sort it out.",
     "whatsapp": "Message on WhatsApp",
     "instagram": "Follow on Instagram"
@@ -77,6 +47,6 @@
     "tagline": "See you on the road -- from Toro, Zamora.",
     "whatsapp": "WhatsApp",
     "instagram": "Instagram",
-    "copyright": "2024 Lola Camper. Made with love."
+    "copyright": "2024 Rolling Free. Made with love."
   }
 }

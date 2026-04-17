@@ -39,7 +39,7 @@ const MOCK_REVIEWS: Review[] = [
     author: 'Carlos & Lucía',
     initials: 'CL',
     rating: 5,
-    text: 'Alquilamos Lola para un fin de semana por los Arribes del Duero y fue mágico. La cama es comodísima, la cocina tiene todo lo necesario y la ducha exterior es un lujazo. 100% recomendable.',
+    text: 'Alquilamos la camper para un fin de semana por los Arribes del Duero y fue mágico. La cama es comodísima, la cocina tiene todo lo necesario y la ducha exterior es un lujazo. 100% recomendable.',
     relativeTime: 'hace 1 mes',
   },
   {
