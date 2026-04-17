@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../i18n/utils';
 import { useTranslations } from '../i18n/utils';
+import vanData from '../data/van-data.json';
 
 interface Props {
   lang: Lang;
@@ -10,9 +11,9 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const categories = [
-  { key: 'kitchen' as const, icon: 'kitchen' },
-  { key: 'water' as const, icon: 'water' },
-  { key: 'energy' as const, icon: 'energy' },
+  { key: 'kitchen'  as const, icon: 'kitchen'  },
+  { key: 'comfort'  as const, icon: 'bed'      },
+  { key: 'energy'   as const, icon: 'energy'   },
   { key: 'exterior' as const, icon: 'exterior' },
 ];
 ---
@@ -23,7 +24,8 @@ const categories = [
 
     <div class="equipment__grid">
       {categories.map((cat) => {
-        const category = t.equipment.categories[cat.key];
+        const category = vanData.equipment[cat.key];
+        const items = category.items[lang];
         return (
           <div class="equipment-card fade-in-up">
             <div class="equipment-card__icon">
@@ -37,10 +39,13 @@ const categories = [
                   <path d="M22 12V8"/>
                 </svg>
               )}
-              {cat.icon === 'water' && (
+              {cat.icon === 'bed' && (
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 4 C18 4 8 16 8 22a10 10 0 0020 0C28 16 18 4 18 4z"/>
-                  <path d="M14 24c1-2 3-3 5-2" opacity="0.5"/>
+                  <path d="M4 26V14a2 2 0 012-2h24a2 2 0 012 2v12"/>
+                  <path d="M4 20h28"/>
+                  <path d="M9 20v-4a1 1 0 011-1h6a1 1 0 011 1v4"/>
+                  <line x1="4" y1="26" x2="4" y2="30"/>
+                  <line x1="32" y1="26" x2="32" y2="30"/>
                 </svg>
               )}
               {cat.icon === 'energy' && (
@@ -64,9 +69,9 @@ const categories = [
                 </svg>
               )}
             </div>
-            <h3 class="equipment-card__title">{category.label}</h3>
+            <h3 class="equipment-card__title">{category.label[lang]}</h3>
             <ul class="equipment-card__list">
-              {category.items.map((item: string) => (
+              {items.map((item: string) => (
                 <li class="equipment-card__item">
                   <span class="equipment-card__dot" aria-hidden="true"></span>
                   {item}

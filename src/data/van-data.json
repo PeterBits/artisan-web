@@ -1,0 +1,86 @@
+{
+  "$comment": "Datos factuales de la furgoneta. NO inventar valores. Si falta info, dejar null o 'A consultar'.",
+  "vehicle": {
+    "chassis": "Ford",
+    "model": "Rimor Kilig",
+    "year": 2024,
+    "fuel": { "es": "Diésel", "en": "Diesel" },
+    "transmission": { "es": "Manual", "en": "Manual" },
+    "displacement": "2000 cc",
+    "doors": 3,
+    "color": { "es": "Blanco", "en": "White" },
+    "bodyType": { "es": "Capuchina", "en": "Coachbuilt (over-cab)" },
+    "licenseCategory": "B"
+  },
+  "capacity": {
+    "travelSeats": 6,
+    "sleepingPlaces": 6,
+    "bedSummary": {
+      "es": "Camas dobles + cama capuchina",
+      "en": "Double beds + over-cab bed"
+    }
+  },
+  "equipment": {
+    "kitchen": {
+      "label": { "es": "Cocina", "en": "Kitchen" },
+      "items": {
+        "es": ["Cocina completa", "Nevera", "Menaje (opcional)"],
+        "en": ["Full kitchen", "Fridge", "Cookware (optional)"]
+      }
+    },
+    "comfort": {
+      "label": { "es": "Descanso", "en": "Sleeping" },
+      "items": {
+        "es": ["Cama capuchina", "Camas dobles", "Ropa de cama (opcional)"],
+        "en": ["Over-cab bed", "Double beds", "Bedding (optional)"]
+      }
+    },
+    "energy": {
+      "label": { "es": "Energía y clima", "en": "Energy & climate" },
+      "items": {
+        "es": ["Placa solar", "Calefacción a gas"],
+        "en": ["Solar panel", "Gas heating"]
+      }
+    },
+    "exterior": {
+      "label": { "es": "Conducción y exterior", "en": "Driving & outdoors" },
+      "items": {
+        "es": ["Toldo", "Cámara de marcha atrás", "Mesa y sillas (opcional)"],
+        "en": ["Awning", "Reverse camera", "Table & chairs (optional)"]
+      }
+    }
+  },
+  "booking": {
+    "minNights": null,
+    "minNightsLabel": {
+      "es": "Mínimo de noches a consultar",
+      "en": "Minimum nights on request"
+    },
+    "deposit": null,
+    "depositLabel": {
+      "es": "Fianza a concretar (depende del seguro)",
+      "en": "Deposit TBC (depends on insurance policy)"
+    },
+    "unlimitedKm": true,
+    "kmLabel": {
+      "es": "Km ilimitados",
+      "en": "Unlimited km"
+    },
+    "conditionsSummary": {
+      "es": "Km ilimitados · Fianza a concretar · Mínimo de noches a consultar",
+      "en": "Unlimited km · Deposit TBC · Minimum nights on request"
+    }
+  },
+  "pricing": {
+    "available": false,
+    "availabilityLabel": {
+      "es": "A consultar",
+      "en": "On request"
+    },
+    "seasonsMessage": {
+      "es": "Los precios varían según temporada. Escríbenos y te confirmamos la tarifa.",
+      "en": "Prices vary by season. Contact us for the current rate."
+    },
+    "seasons": []
+  }
+}

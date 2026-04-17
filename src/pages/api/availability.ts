@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import vanData from '../../data/van-data.json';
 
 interface CalendarEvent {
   start: { date?: string; dateTime?: string };
@@ -9,16 +10,23 @@ interface CalendarResponse {
   items?: CalendarEvent[];
 }
 
+interface Season {
+  months: number[];
+  price: number;
+}
+
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const year = parseInt(url.searchParams.get('year') || String(new Date().getFullYear()));
   const month = parseInt(url.searchParams.get('month') || String(new Date().getMonth() + 1));
 
-  const getPriceForDate = (date: Date): number => {
+  // Prices are driven by van-data.json. While they are unconfirmed
+  // (seasons is empty), the calendar simply shows availability without prices.
+  const seasons = (vanData.pricing.seasons as Season[]) || [];
+  const getPriceForDate = (date: Date): number | undefined => {
     const m = date.getMonth() + 1;
-    if (m === 7 || m === 8) return 95;
-    if (m === 6 || m === 9) return 80;
-    return 65;
+    const season = seasons.find((s) => s.months.includes(m));
+    return season?.price;
   };
 
   try {
@@ -55,10 +63,11 @@ export const GET: APIRoute = async ({ request }) => {
       const date = new Date(year, month - 1, d);
       const dateStr = date.toISOString().split('T')[0];
       const isReserved = reservedDates.includes(dateStr);
+      const price = isReserved ? undefined : getPriceForDate(date);
 
       days[dateStr] = {
         status: isReserved ? 'reserved' : 'available',
-        price: isReserved ? undefined : getPriceForDate(date),
+        ...(price !== undefined ? { price } : {}),
       };
     }
 

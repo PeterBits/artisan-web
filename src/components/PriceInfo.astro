@@ -1,6 +1,7 @@
 ---
 import type { Lang } from '../i18n/utils';
 import { useTranslations } from '../i18n/utils';
+import vanData from '../data/van-data.json';
 
 interface Props {
   lang: Lang;
@@ -9,25 +10,34 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
+const priceLabel = lang === 'es' ? 'Tarifa' : 'Rate';
+const seasonLabels = {
+  low:    lang === 'es' ? 'Temporada baja'   : 'Low season',
+  mid:    lang === 'es' ? 'Temporada media'  : 'Mid season',
+  summer: lang === 'es' ? 'Temporada alta'   : 'High season',
+};
+
+const availabilityLabel = vanData.pricing.availabilityLabel[lang];
+const seasonsMessage = vanData.pricing.seasonsMessage[lang];
+const conditionsSummary = vanData.booking.conditionsSummary[lang];
+
 const priceCards = [
-  { key: 'low' as const, emoji: '', highlighted: false },
-  { key: 'mid' as const, emoji: '', highlighted: true },
-  { key: 'summer' as const, emoji: '', highlighted: false },
+  { key: 'low',    label: seasonLabels.low,    highlighted: false },
+  { key: 'mid',    label: seasonLabels.mid,    highlighted: true  },
+  { key: 'summer', label: seasonLabels.summer, highlighted: false },
 ];
 ---
 
 <section class="price-info section--compact">
   <div class="price-info__inner container">
+    <p class="price-info__intro fade-in-up">{seasonsMessage}</p>
     <div class="price-info__cards">
-      {priceCards.map((card) => {
-        const priceData = t.bookings.prices[card.key];
-        return (
-          <div class={`price-card fade-in-up ${card.highlighted ? 'price-card--highlighted' : ''}`}>
-            <span class="price-card__label">{priceData.label}</span>
-            <span class="price-card__price">{priceData.price}</span>
-          </div>
-        );
-      })}
+      {priceCards.map((card) => (
+        <div class={`price-card fade-in-up ${card.highlighted ? 'price-card--highlighted' : ''}`}>
+          <span class="price-card__label">{card.label}</span>
+          <span class="price-card__price">{availabilityLabel}</span>
+        </div>
+      ))}
     </div>
 
     <div class="price-info__conditions fade-in-up">
@@ -36,12 +46,21 @@ const priceCards = [
         <line x1="12" y1="16" x2="12" y2="12"/>
         <line x1="12" y1="8" x2="12.01" y2="8"/>
       </svg>
-      <p class="price-info__conditions-text">{t.bookings.conditions}</p>
+      <p class="price-info__conditions-text">{conditionsSummary}</p>
     </div>
   </div>
 </section>
 
 <style>
+  .price-info__intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+    color: var(--color-text);
+    opacity: 0.8;
+    font-size: 1rem;
+  }
+
   .price-info__cards {
     display: grid;
     grid-template-columns: 1fr;
@@ -81,9 +100,10 @@ const priceCards = [
   .price-card__price {
     display: block;
     font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 1.4rem;
+    font-weight: 600;
     color: var(--color-primary);
+    letter-spacing: 0.02em;
   }
 
   .price-info__conditions {
@@ -125,7 +145,7 @@ const priceCards = [
     }
 
     .price-card__price {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
   }
 </style>
